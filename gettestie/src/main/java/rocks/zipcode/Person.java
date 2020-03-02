@@ -1,7 +1,8 @@
-package gettestie.src.main.java.rocks.zipcode;
+package rocks.zipcode;
 
 
-public class Person {
+
+public class Person implements Comparable<Person>{
     private String name;
     private int yearOfBirth;
     private Address address;
@@ -62,5 +63,10 @@ public class Person {
     public String toString() // redefined from "Object"
     {
         return "Name: " + name + "\n" + "Year of birth: " + yearOfBirth + "\n";
+    }
+
+    @Override
+    public int compareTo(Person otherPerson) {
+        return this.name.compareTo(otherPerson.getName());
     }
 }

@@ -1,4 +1,4 @@
-package gettestie.src.main.java.rocks.zipcode;
+package rocks.zipcode;
 
 public class Address {
     private String street;
@@ -21,6 +21,9 @@ public class Address {
         this.town = town;
         this.postCode = postCode;
         this.country = country;
+    }
+    public String getStreet(){
+        return this.street;
     }
 
     /**
