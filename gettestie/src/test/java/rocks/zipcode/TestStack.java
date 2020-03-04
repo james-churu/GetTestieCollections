@@ -1,10 +1,12 @@
 package rocks.zipcode;
 
+import org.junit.Assert;
+
 import static org.junit.Assert.*;
 
 import java.util.*;
 
-public class TestStack {
+public class TestStack implements Comparable{
 
     Address place1 = new Address("North Street","Newark","19702");
     Address place2 = new Address("North Street","Newark","19702");
@@ -13,12 +15,12 @@ public class TestStack {
     Address place5 = new Address("North Street","Newark","19702");
     Address place6 = new Address("North Street","Newark","19702");
 
-    Person person1 = new Person("Jimmy",1999);
-    Person person2 = new Person("Simmy",1999);
-    Person person3 = new Person("Timmy",1999);
-    Person person4 = new Person("Kimmy",1999);
-    Person person5 = new Person("Limmy",1999);
-    Person person6 = new Person("Bimmy",1999);
+    Person person1 = new Person("Jimmy",2000);
+    Person person2 = new Person("Simmy",2001);
+    Person person3 = new Person("Timmy",2002);
+    Person person4 = new Person("Kimmy",2003);
+    Person person5 = new Person("Limmy",2004);
+    Person person6 = new Person("Bimmy",3005);
 
 
     @org.junit.Before
@@ -53,6 +55,17 @@ public class TestStack {
         assertEquals(place1,nameAddress.get(person1));      // get(key) ---- returns the value at that key
         assertEquals(false,nameAddress.isEmpty()); // isEmpty() --- returns boolean true or false
         assertEquals(6,nameAddress.size());        // .size() ----- returns the size of the map
+    }
+    @org.junit.Test
+    public void TestHashMapIsEmpty() {
+        HashMap<Person, Address> nameAddress = new HashMap<>();
+        nameAddress.put(person1, place1);
+        nameAddress.put(person2, place2);
+        nameAddress.put(person3, place3);
+        nameAddress.put(person4, place4);
+        nameAddress.put(person5, place5);
+        nameAddress.put(person6, place6);
+        assertEquals(false, nameAddress.isEmpty()); // isEmpty() --- returns boolean true or false
     }
     @org.junit.Test
     public void TestHashSet(){
@@ -156,10 +169,19 @@ public class TestStack {
     }
     @org.junit.Test
     public void PriorityQueue(){
-        PriorityQueue<Person> persQue = new PriorityQueue<>();
+        PriorityQueue<Person> personQueue = new PriorityQueue<>();
 
+        personQueue.add(person3);
+        personQueue.add(person1);
+        personQueue.add(person2);
+
+        Assert.assertEquals(person3, personQueue.peek());
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 
     // HashSet  ---------X
     // ArrayList  -------X
@@ -171,8 +193,8 @@ public class TestStack {
     // Stack  -----------X
     // TreeSet ----------X
     // Iterator ---------X
-    // priorityQueue ---
-    // Comparable
+    // priorityQueue ----X
+    // Comparable -------X
 
 
 }
